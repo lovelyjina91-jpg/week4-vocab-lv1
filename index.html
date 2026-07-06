@@ -207,7 +207,7 @@ function buildQuestions(sectionWords) {
     var ek = Math.random() < 0.5; // true: 영→한
     var answer = ek ? w.ko : w.en;
     var pool = WORDS.filter(function (o) {
-      return o !== w && (ek ? o.ko !== w.ko : o.en.toLowerCase() !== w.en.toLowerCase());
+      return o.en.toLowerCase() !== w.en.toLowerCase() && o.ko !== w.ko;
     }).map(function (o) { return ek ? o.ko : o.en; });
     var seen = {}; var uniq = [];
     shuffle(pool).forEach(function (p) { if (!seen[p]) { seen[p] = 1; uniq.push(p); } });
